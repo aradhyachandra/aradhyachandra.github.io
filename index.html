@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aradhya Chandra · Analytics</title>
+  <meta name="description" content="Aradhya Chandra, B.Tech CSE at Shiv Nadar University. Analytics projects that turn data into business decisions: inventory planning, customer retention and financial research.">
+  <link rel="canonical" href="https://aradhyachandra.github.io/">
+
+  <!-- Link previews (Gmail, LinkedIn, WhatsApp, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aradhya Chandra">
+  <meta property="og:title" content="Aradhya Chandra · I turn messy data into business decisions">
+  <meta property="og:description" content="Analytics projects on inventory planning, customer retention and financial research, each with the business question, the finding and the recommendation.">
+  <meta property="og:url" content="https://aradhyachandra.github.io/">
+  <meta property="og:image" content="https://aradhyachandra.github.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Aradhya Chandra: I turn messy data into business decisions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aradhya Chandra · I turn messy data into business decisions">
+  <meta name="twitter:description" content="Analytics projects on inventory planning, customer retention and financial research.">
+  <meta name="twitter:image" content="https://aradhyachandra.github.io/assets/img/og-image.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#1f5f4a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Aradhya Chandra</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" aria-labelledby="name">
+    <div class="wrap">
+      <!-- To use a photo: replace this div with
+           <img class="monogram" src="/assets/img/photo.jpg" alt="Aradhya Chandra" width="136" height="136"> -->
+      <div class="monogram" aria-hidden="true">AC</div>
+      <div>
+        <h1 id="name">Aradhya Chandra</h1>
+        <p class="headline">I turn messy data into business decisions.</p>
+        <p class="subline">B.Tech CSE, Shiv Nadar University · analytics, SQL, machine learning</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="/resume/Aradhya_Chandra_Resume.pdf">Resume (PDF)</a>
+          <a class="btn" href="mailto:aradhyachandra5@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/aradhyachandra/" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/aradhyachandra" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <p class="eyebrow">Projects</p>
+      <h2 id="projects-h">Three business questions, answered with data</h2>
+      <p class="lede">Each project starts from a decision someone has to make, tests the answer on data it never saw, and says which numbers are measured and which rest on assumptions.</p>
+
+      <div class="cards">
+        <article class="card">
+          <p class="num">01 · Retail operations</p>
+          <h3>Demand forecasting &amp; inventory planning</h3>
+          <p class="question">How much stock should a grocery store hold so shelves rarely run empty, without tying up cash?</p>
+          <div class="stat">
+            <strong>5.5% less inventory</strong>
+            <span>than the best simple rule for the same 95% fill rate, across 5,748 Walmart item-stores. Simulated under stated assumptions; held in all 20 scenarios.</span>
+          </div>
+          <ul class="tags" aria-label="Tools">
+            <li>SQL (DuckDB)</li><li>Python</li><li>LightGBM</li><li>Inventory simulation</li>
+          </ul>
+          <div class="card-links">
+            <a href="/projects/demand-forecasting.html">Read the case study →</a>
+            <a href="https://github.com/aradhyachandra/demand-forecasting" rel="noopener">Code</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="num">02 · Customer retention</p>
+          <h3>Customer churn &amp; retention analytics</h3>
+          <p class="question">Which customers are about to stop buying, and is a retention offer worth paying for?</p>
+          <div class="stat">
+            <strong>83.1% vs 73.7%</strong>
+            <span>of the 10% highest-risk customers did stop buying (360 of 433), against a "days since last purchase" rule. Tested once on a later month.</span>
+          </div>
+          <ul class="tags" aria-label="Tools">
+            <li>Python</li><li>scikit-learn</li><li>Cohort analysis</li><li>Scenario analysis</li>
+          </ul>
+          <div class="card-links">
+            <a href="/projects/customer-churn.html">Read the case study →</a>
+            <a href="https://github.com/aradhyachandra/customer-churn" rel="noopener">Code</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="num">03 · Financial research</p>
+          <h3>AI equity research assistant (TCS)</h3>
+          <p class="question">Can an AI assistant answer questions about a company's financials without making up numbers?</p>
+          <div class="stat">
+            <strong>15 of 17 vs 2 of 17</strong>
+            <span>numeric answers correct, against a standard AI-search baseline on the same model, with 0 of 40 unsourced figures. Frozen test, run once.</span>
+          </div>
+          <ul class="tags" aria-label="Tools">
+            <li>Python</li><li>SQLite</li><li>DCF &amp; ratios</li><li>Local LLM</li>
+          </ul>
+          <div class="card-links">
+            <a href="/projects/tcs-research-assistant.html">Read the case study →</a>
+            <a href="https://github.com/aradhyachandra/investment-research" rel="noopener">Code</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Experience ===== -->
+  <section id="experience" aria-labelledby="experience-h">
+    <div class="wrap">
+      <p class="eyebrow">Experience</p>
+      <h2 id="experience-h">Experience</h2>
+      <ul class="timeline">
+        <li>
+          <span class="role">AI/ML Research Intern · IIT Kanpur</span>
+          <span class="when">May 2026 – June 2026 · Summer training internship, under faculty guidance</span>
+          <p>Built a legal assistant that answers questions from Indian legal documents with page citations, and declines questions its documents can't answer instead of guessing. Designed the full pipeline, from document ingestion to retrieval.</p>
+        </li>
+        <li>
+          <span class="role">Marketing Associate · Finvest, SNU's Finance Club</span>
+          <span class="when">May 2025 – present</span>
+          <p>Promoted the university's annual finance and business conclave with a 10+ member team; our on-ground campaign increased footfall by 20%.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2 id="skills-h">What I work with</h2>
+      <div class="skills">
+        <div>
+          <h3>Analytics &amp; SQL</h3>
+          <p>SQL (DuckDB, SQLite) · cohort and churn analysis · inventory planning · scenario and sensitivity analysis · DCF and ratio analysis</p>
+        </div>
+        <div>
+          <h3>Python &amp; ML</h3>
+          <p>pandas · scikit-learn · LightGBM · time-series forecasting · out-of-time testing · retrieval-augmented generation (LangChain, ChromaDB, Ollama)</p>
+        </div>
+        <div>
+          <h3>Visualisation &amp; dashboards</h3>
+          <p>Streamlit dashboards · matplotlib and Altair charts · findings written up as business reports</p>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <p>Git / GitHub · Parquet · VS Code · also Java, C, HTML/CSS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <div class="about-text">
+        <p class="eyebrow">About</p>
+        <h2 id="about-h">About me</h2>
+        <p>I'm a Computer Science student at Shiv Nadar University who likes the part of analytics where a number turns into a decision.</p>
+        <p>My projects start from a business question, test answers on data they haven't seen, and say plainly which results are measured and which rest on assumptions.</p>
+        <p>I'm looking for an analytics or consulting internship where I can do this on real client problems.</p>
+      </div>
+      <dl class="edu" aria-label="Education">
+        <dt>Education</dt>
+        <dd><strong>Shiv Nadar University</strong>, Greater Noida</dd>
+        <dt>Degree</dt>
+        <dd>B.Tech, Computer Science &amp; Engineering</dd>
+        <dt>Years</dt>
+        <dd>2024 – 2028</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-h">Let's talk</h2>
+      <p class="lede">I'm open to analytics and consulting internships. Email is the fastest way to reach me.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="mailto:aradhyachandra5@gmail.com">aradhyachandra5@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/aradhyachandra/" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/aradhyachandra" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <span id="year">2026</span> Aradhya Chandra</p>
+  </div>
+</footer>
+</body>
+</html>
