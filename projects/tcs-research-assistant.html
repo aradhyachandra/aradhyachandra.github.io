@@ -84,6 +84,11 @@
     </div>
     <p class="note">Small sample: one company and 23 test questions. Read these as counts on a hand-built set, not general accuracy figures. Source: the project README's v1.1 test results.</p>
 
+    <figure>
+      <a class="frame" href="/assets/img/tcs-sourced-answer.png" title="Open full-size screenshot"><img src="/assets/img/tcs-sourced-answer.png" width="1280" height="1040" alt="Screenshot of the assistant answering 'What was TCS's operating margin in FY26?' with 25.03%, followed by the formula and four inputs, each citing the TCS Integrated Annual Report 2025-26, PDF page 167, and marked as checked by a human." loading="lazy"></a>
+      <figcaption>A live answer from the app. The model writes the sentence; the 25.03% comes from tested code, with the formula and each input linked to its annual-report page. The verifier checked the figure and raised 2 warnings, shown in its own box.</figcaption>
+    </figure>
+
     <h2>Recommendation</h2>
     <div class="callout">
       <p><strong>For financial questions, keep the arithmetic out of the language model.</strong> Let the AI route and explain, let tested code compute, and attach a source to every number. On this test that design removed unsourced figures entirely.</p>
