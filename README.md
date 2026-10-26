@@ -16,11 +16,11 @@ by double-clicking the file.
 
 | File | What it holds |
 |---|---|
-| `index.html` | Home page: hero, project cards, experience, skills, about, contact |
+| `index.html` | Home page: hero with results panel, how I work, project rows, experience, skills, about, contact |
 | `projects/*.html` | One case-study page per project |
-| `assets/css/style.css` | All styling. Colours are the tokens at the top (`--accent` etc.) |
-| `assets/js/main.js` | Light/dark toggle |
-| `assets/img/` | Charts (copied from each project repo) and `og-image.png` (link preview) |
+| `assets/css/style.css` | All styling. Colours and fonts are the tokens at the top (`--accent`, `--gold`, `--display`, `--sans`) |
+| `assets/js/main.js` | Light/dark toggle, current-section highlight, fade-in on scroll |
+| `assets/img/` | Charts (copied from each project repo), smaller `home-*.webp` copies used on the home page, and `og-image.png` (link preview) |
 | `resume/Aradhya_Chandra_Resume.pdf` | The resume behind the "Resume (PDF)" button |
 | `tools/og-image.html` | Source for the link-preview image (see below) |
 
@@ -35,11 +35,14 @@ Rule: every number must come from the project's own results files or report. Don
 ## Add a project
 
 1. Copy `projects/customer-churn.html` to `projects/<new-name>.html` and replace the text inside
-   `<main>`. Update the `<title>`, `description`, `og:` and `canonical` lines in `<head>`.
+   `<main>`: the header (question and three KPI tiles), one `<section class="cs-section">` per
+   heading, the matching links in the "On this page" list, and the previous/next links at the
+   bottom. Update the `<title>`, `description`, `og:` and `canonical` lines in `<head>`.
 2. Copy one or two charts from the project repo into `assets/img/` (keep them under ~200 KB) and
    write a caption and alt text for each.
-3. In `index.html`, copy one `<article class="card">` block in the Projects section and edit it.
-   Point "Read the case study" to the new page and "Code" to the repo.
+3. In `index.html`, copy one `<article class="feature">` block in the Projects section and edit it
+   (rows alternate left/right automatically). Point "Read the case study" to the new page and
+   "Code" to the repo. Add a smaller WebP copy of the chart for the home page (about 1000px wide).
 
 ## Replace the resume
 

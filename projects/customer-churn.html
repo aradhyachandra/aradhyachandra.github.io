@@ -19,10 +19,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#1f5f4a">
+  <meta name="theme-color" content="#0f5b4b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js"></script>
 </head>
@@ -30,7 +30,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Aradhya Chandra</a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span><span class="brand-name">Aradhya Chandra</span></a>
     <nav class="nav" aria-label="Main">
       <a href="/#projects">Projects</a>
       <a href="/#skills">Skills</a>
@@ -44,35 +44,62 @@
   </div>
 </header>
 
-<main id="main" class="case">
-  <article class="wrap">
-    <a class="back" href="/#projects">← All projects</a>
-    <p class="eyebrow">Case study 02 · Customer retention</p>
-    <h1>Customer churn &amp; retention analytics</h1>
-    <p class="question">Which customers are about to stop buying, and is a retention offer worth paying for?</p>
-    <p class="meta">UK online retailer, real transactions · Python, pandas, scikit-learn · 2-minute read</p>
+<main id="main">
+  <section class="cs-hero" aria-labelledby="cs-title">
+    <div class="wrap">
+      <a class="back" href="/#projects">← All projects</a>
+      <p class="eyebrow">Case study 02 · Customer retention</p>
+      <h1 id="cs-title">Customer churn &amp; retention analytics</h1>
+      <p class="question">Which customers are about to stop buying, and is a retention offer worth paying for?</p>
+      <p class="meta">UK online retailer, real transactions · Python, pandas, scikit-learn · 2-minute read</p>
+      <div class="cs-kpis">
+        <div class="cs-kpi"><strong>83.1% vs 73.7%</strong><span>of the 10% of customers the model rated riskiest did stop buying, vs the simple rule</span></div>
+        <div class="cs-kpi"><strong>£22,621</strong><span>expected net benefit in the central case (estimate)</span></div>
+        <div class="cs-kpi"><strong>£7,473</strong><span>the same plan recomputed with what customers actually did</span></div>
+      </div>
+    </div>
+  </section>
 
-    <h2>The problem</h2>
-    <p>A UK online giftware retailer, selling mostly to small businesses, loses many customers every quarter. It wants to know which active customers are likely to stop buying in the next 90 days, why, and whether a retention offer would pay for itself.</p>
-
-    <h2>The data</h2>
-    <ul>
+  <div class="wrap cs-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+          <li><a href="#the-problem">The problem</a></li>
+          <li><a href="#the-data">The data</a></li>
+          <li><a href="#what-i-did">What I did</a></li>
+          <li><a href="#key-findings">Key findings</a></li>
+          <li><a href="#recommendation">Recommendation</a></li>
+          <li><a href="#limitations-and-next-steps">Limitations and next steps</a></li>
+          <li><a href="#code-and-full-report">Code and full report</a></li>
+      </ol>
+    </nav>
+    <article class="cs-body">
+      
+      <section class="cs-section" id="the-problem" aria-labelledby="the-problem-h">
+        <h2 id="the-problem-h">The problem</h2>
+        <p>A UK online giftware retailer, selling mostly to small businesses, loses many customers every quarter. It wants to know which active customers are likely to stop buying in the next 90 days, why, and whether a retention offer would pay for itself.</p>
+      </section>
+      <section class="cs-section" id="the-data" aria-labelledby="the-data-h">
+        <h2 id="the-data-h">The data</h2>
+        <ul>
       <li>UCI Online Retail II: 1,067,371 invoice lines from December 2009 to December 2011.</li>
       <li>After removing duplicates, invalid prices and lines with no customer ID: 794,183 lines and 5,875 customers.</li>
       <li>"Churned" means an active customer made no purchase in the 90 days after a given date.</li>
     </ul>
-
-    <h2>What I did</h2>
-    <ul>
+      </section>
+      <section class="cs-section" id="what-i-did" aria-labelledby="what-i-did-h">
+        <h2 id="what-i-did-h">What I did</h2>
+        <ul>
       <li>Cleaned the transactions with every rule written down, and built monthly cohorts to see how many new customers come back.</li>
       <li>Built 21 behavioural features (how often, how recently and how much each customer buys) using only data from before each cutoff date, with a test proving no future data leaks in.</li>
       <li>Compared a simple "days since last purchase" rule, logistic regression and gradient boosting. All were tuned on earlier months, frozen, then tested once on a later month (September 2011).</li>
       <li>Turned the risk scores into a costed contact list and re-ran it across 27 combinations of margin, save rate and offer cost.</li>
       <li>Checked the plan after the fact against what customers actually did.</li>
     </ul>
-
-    <h2>Key findings</h2>
-    <div class="findings">
+      </section>
+      <section class="cs-section" id="key-findings" aria-labelledby="key-findings-h">
+        <h2 id="key-findings-h">Key findings</h2>
+        <div class="findings">
       <div class="finding"><strong>83.1% vs 73.7%</strong><span>Of the 10% of customers the model rated riskiest, 360 of 433 did stop buying, against 73.7% for the "days since last purchase" rule (50.5% churned overall).</span></div>
       <div class="finding"><strong>£22,621</strong><span>expected net benefit from contacting 1,567 customers in the central case (estimate: 30% margin, 10% save rate, £15 offer).</span></div>
       <div class="finding"><strong>21 to 4,212</strong><span>customers: the best list size across the 27 scenarios. The answer depends far more on the assumptions than on the model.</span></div>
@@ -89,31 +116,70 @@
       <a class="frame" href="/assets/img/churn-predicted-vs-actual.png" title="Open full-size chart"><img src="/assets/img/churn-predicted-vs-actual.png" width="985" height="626" alt="Bar chart comparing predicted and actual churn. Everyone active: 63% predicted, 50% actual. Central-case contact list: 52% predicted, 36% actual. Not on the list: 70% predicted, 59% actual." loading="lazy"></a>
       <figcaption>Predicted vs actual churn after the fact. The model ranks customers well but its probabilities ran high, most of all on the chosen contact list.</figcaption>
     </figure>
-
-    <h2>Recommendation</h2>
-    <div class="callout">
+      </section>
+      <section class="cs-section" id="recommendation" aria-labelledby="recommendation-h">
+        <h2 id="recommendation-h">Recommendation</h2>
+        <div class="callout callout-rec">
       <p><strong>Use the score to rank customers, not to forecast how many will leave.</strong> Before a full rollout, run a small controlled campaign: send the offer to a random half of the chosen list to measure the real save rate. That one number decides how far down the list it pays to go.</p>
     </div>
-
-    <h2>Limitations and next steps</h2>
-    <ul>
+      </section>
+      <section class="cs-section" id="limitations-and-next-steps" aria-labelledby="limitations-and-next-steps-h">
+        <h2 id="limitations-and-next-steps-h">Limitations and next steps</h2>
+        <ul>
       <li>Margin, save rate and offer cost are assumptions; only a controlled campaign can measure the save rate.</li>
       <li>A kept customer is valued at 12 months of revenue while "churned" means only 90 days without buying, so benefits are likely overstated.</li>
       <li>Churn was lower in the test month (50.5%) than in training (61.3% to 67.0%), possibly pre-Christmas buying. One autumn of data can't separate season from trend.</li>
       <li>One retailer, 2009–2011 data, and a few large wholesale accounts dominate the £ totals (top 1% of customers hold 29.0% of revenue).</li>
     </ul>
-
-    <h2>Code and full report</h2>
-    <div class="btns">
+      </section>
+      <section class="cs-section" id="code-and-full-report" aria-labelledby="code-and-full-report-h">
+        <h2 id="code-and-full-report-h">Code and full report</h2>
+        <div class="btns">
       <a class="btn btn-primary" href="https://github.com/aradhyachandra/customer-churn/blob/main/docs/REPORT.md" rel="noopener">Full findings report</a>
       <a class="btn" href="https://github.com/aradhyachandra/customer-churn" rel="noopener">Code on GitHub</a>
     </div>
-  </article>
+      </section>
+    </article>
+  </div>
+
+  <nav class="next-wrap" aria-label="More projects">
+    <div class="wrap next-grid">
+      <a class="next-card" href="/projects/demand-forecasting.html"><small>← Previous project</small><span>Demand forecasting &amp; inventory planning</span></a>
+      <a class="next-card next" href="/projects/tcs-research-assistant.html"><small>Next project →</small><span>AI equity research assistant (TCS)</span></a>
+    </div>
+  </nav>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© <span id="year">2026</span> Aradhya Chandra · <a href="/">Home</a></p>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span>Aradhya Chandra</a>
+        <p>I turn messy data into business decisions.</p>
+      </div>
+      <nav aria-labelledby="foot-pages">
+        <h2 id="foot-pages">Pages</h2>
+        <ul>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/projects/demand-forecasting.html">Demand forecasting</a></li>
+          <li><a href="/projects/customer-churn.html">Customer churn</a></li>
+          <li><a href="/projects/tcs-research-assistant.html">TCS research assistant</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:aradhyachandra5@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/aradhya-chandra-41390a30b" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/aradhyachandra" rel="noopener">GitHub</a></li>
+          <li><a href="/resume/Aradhya_Chandra_Resume.pdf">Resume (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="year">2026</span> Aradhya Chandra</p>
+      <p>B.Tech CSE, Shiv Nadar University</p>
+    </div>
   </div>
 </footer>
 </body>

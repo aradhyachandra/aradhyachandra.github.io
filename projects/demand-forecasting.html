@@ -19,10 +19,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#1f5f4a">
+  <meta name="theme-color" content="#0f5b4b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js"></script>
 </head>
@@ -30,7 +30,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Aradhya Chandra</a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span><span class="brand-name">Aradhya Chandra</span></a>
     <nav class="nav" aria-label="Main">
       <a href="/#projects">Projects</a>
       <a href="/#skills">Skills</a>
@@ -44,35 +44,62 @@
   </div>
 </header>
 
-<main id="main" class="case">
-  <article class="wrap">
-    <a class="back" href="/#projects">← All projects</a>
-    <p class="eyebrow">Case study 01 · Retail operations</p>
-    <h1>Demand forecasting &amp; inventory planning</h1>
-    <p class="question">How much stock should a grocery store hold so shelves rarely run empty, without tying up cash?</p>
-    <p class="meta">Walmart M5 data · Python, SQL (DuckDB), LightGBM · 2-minute read</p>
+<main id="main">
+  <section class="cs-hero" aria-labelledby="cs-title">
+    <div class="wrap">
+      <a class="back" href="/#projects">← All projects</a>
+      <p class="eyebrow">Case study 01 · Retail operations</p>
+      <h1 id="cs-title">Demand forecasting &amp; inventory planning</h1>
+      <p class="question">How much stock should a grocery store hold so shelves rarely run empty, without tying up cash?</p>
+      <p class="meta">Walmart M5 data · Python, SQL (DuckDB), LightGBM · 2-minute read</p>
+      <div class="cs-kpis">
+        <div class="cs-kpi"><strong>5.5% less stock</strong><span>for the same 95% fill rate than the best simple rule (simulated)</span></div>
+        <div class="cs-kpi"><strong>20 of 20</strong><span>assumption scenarios kept the same direction</span></div>
+        <div class="cs-kpi"><strong>4.8% less error</strong><span>than the best simple rule on the locked 28 days</span></div>
+      </div>
+    </div>
+  </section>
 
-    <h2>The problem</h2>
-    <p>Every week a store decides how much of each product to stock. Too little and shoppers leave empty-handed; too much and cash sits on the shelf. I asked whether a machine-learning forecast makes that decision better than the simple rules a store might use today, and by how much.</p>
-
-    <h2>The data</h2>
-    <ul>
+  <div class="wrap cs-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+          <li><a href="#the-problem">The problem</a></li>
+          <li><a href="#the-data">The data</a></li>
+          <li><a href="#what-i-did">What I did</a></li>
+          <li><a href="#key-findings">Key findings</a></li>
+          <li><a href="#recommendation">Recommendation</a></li>
+          <li><a href="#limitations-and-next-steps">Limitations and next steps</a></li>
+          <li><a href="#code-and-full-report">Code and full report</a></li>
+      </ol>
+    </nav>
+    <article class="cs-body">
+      
+      <section class="cs-section" id="the-problem" aria-labelledby="the-problem-h">
+        <h2 id="the-problem-h">The problem</h2>
+        <p>Every week a store decides how much of each product to stock. Too little and shoppers leave empty-handed; too much and cash sits on the shelf. I asked whether a machine-learning forecast makes that decision better than the simple rules a store might use today, and by how much.</p>
+      </section>
+      <section class="cs-section" id="the-data" aria-labelledby="the-data-h">
+        <h2 id="the-data-h">The data</h2>
+        <ul>
       <li>Walmart's public M5 competition data: daily unit sales, weekly prices and a calendar of events.</li>
       <li>One state and one category, California groceries: 1,437 products in 4 stores, or 5,748 product-store combinations from 2011 to 2016 (11,156,868 daily rows).</li>
       <li>The last 28 days were locked away at the start and used once, for the final test.</li>
     </ul>
-
-    <h2>What I did</h2>
-    <ul>
+      </section>
+      <section class="cs-section" id="what-i-did" aria-labelledby="what-i-did-h">
+        <h2 id="what-i-did-h">What I did</h2>
+        <ul>
       <li>Reshaped and joined the raw files in SQL (DuckDB) and profiled demand: most products sell only on some days, which shaped how I measured accuracy.</li>
       <li>Built 7 simple forecasting rules a store could use (from "same as last week" to standard methods for irregular demand) and one machine-learning model (LightGBM) covering all products.</li>
       <li>Compared them on 4 past periods, froze the model, then scored the locked 28 days once.</li>
       <li>Turned each forecast into a weekly ordering policy with safety stock and replayed it against actual sales to measure stock held and sales lost.</li>
       <li>Re-ran the simulation under 20 different assumptions for lead time, review frequency and costs.</li>
     </ul>
-
-    <h2>Key findings</h2>
-    <div class="findings">
+      </section>
+      <section class="cs-section" id="key-findings" aria-labelledby="key-findings-h">
+        <h2 id="key-findings-h">Key findings</h2>
+        <div class="findings">
       <div class="finding"><strong>5.5% less stock</strong><span>for the same 95% fill rate than the best simple rule ($282,159 vs $298,495 average inventory), and 10.4% less than "same weekday last week" ($315,076).</span></div>
       <div class="finding"><strong>20 of 20</strong><span>assumption scenarios kept the same direction: 4.7% to 7.3% less stock than the best simple rule.</span></div>
       <div class="finding"><strong>4.8% less error</strong><span>than the best simple rule on the locked 28 days, close to the 4.9% seen on past periods. Better than "same weekday last week" on 93% of product-stores.</span></div>
@@ -89,31 +116,70 @@
       <a class="frame" href="/assets/img/demand-tradeoff.png" title="Open full-size chart"><img src="/assets/img/demand-tradeoff.png" width="1307" height="618" alt="Line chart of average inventory against fill rate for three ordering policies. The LightGBM line sits below TSB and seasonal naive at every fill rate, on both the test period and an earlier check period." loading="lazy"></a>
       <figcaption>Stock needed for each level of service. The blue model-based line sits lowest across the range, on the test period (left) and on an earlier check period (right). Big dots mark the 95% target.</figcaption>
     </figure>
-
-    <h2>Recommendation</h2>
-    <div class="callout">
+      </section>
+      <section class="cs-section" id="recommendation" aria-labelledby="recommendation-h">
+        <h2 id="recommendation-h">Recommendation</h2>
+        <div class="callout callout-rec">
       <p><strong>Pilot the model-based forecast in a few stores, with matched control stores,</strong> and judge it on measured fill rate and average inventory. Before the pilot, fix two known weaknesses: the forecast runs 3.3% to 7.0% low each week, and safety stock should be sized from actual error patterns rather than a normal curve.</p>
     </div>
-
-    <h2>Limitations and next steps</h2>
-    <ul>
+      </section>
+      <section class="cs-section" id="limitations-and-next-steps" aria-labelledby="limitations-and-next-steps-h">
+        <h2 id="limitations-and-next-steps-h">Limitations and next steps</h2>
+        <ul>
       <li>One 28-day test window; the inventory simulation covers 3 weekly orders. One spring month can't show seasonality.</li>
       <li>Service came in at 91.8% of order cycles against a 95% target, because irregular demand is skewed.</li>
       <li>Lead times and costs are my judgement calls. With real lead times, margins and stock-out records the money figures could be quoted with confidence.</li>
       <li>Holiday and price effects are associations, not proven causes. Prices in this dataset only change in weeks with sales, so price effects can't be measured cleanly.</li>
     </ul>
-
-    <h2>Code and full report</h2>
-    <div class="btns">
+      </section>
+      <section class="cs-section" id="code-and-full-report" aria-labelledby="code-and-full-report-h">
+        <h2 id="code-and-full-report-h">Code and full report</h2>
+        <div class="btns">
       <a class="btn btn-primary" href="https://github.com/aradhyachandra/demand-forecasting/blob/main/docs/REPORT.md" rel="noopener">Full findings report</a>
       <a class="btn" href="https://github.com/aradhyachandra/demand-forecasting" rel="noopener">Code on GitHub</a>
     </div>
-  </article>
+      </section>
+    </article>
+  </div>
+
+  <nav class="next-wrap" aria-label="More projects">
+    <div class="wrap next-grid">
+      <a class="next-card" href="/projects/tcs-research-assistant.html"><small>← Previous project</small><span>AI equity research assistant (TCS)</span></a>
+      <a class="next-card next" href="/projects/customer-churn.html"><small>Next project →</small><span>Customer churn &amp; retention analytics</span></a>
+    </div>
+  </nav>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© <span id="year">2026</span> Aradhya Chandra · <a href="/">Home</a></p>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span>Aradhya Chandra</a>
+        <p>I turn messy data into business decisions.</p>
+      </div>
+      <nav aria-labelledby="foot-pages">
+        <h2 id="foot-pages">Pages</h2>
+        <ul>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/projects/demand-forecasting.html">Demand forecasting</a></li>
+          <li><a href="/projects/customer-churn.html">Customer churn</a></li>
+          <li><a href="/projects/tcs-research-assistant.html">TCS research assistant</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:aradhyachandra5@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/aradhya-chandra-41390a30b" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/aradhyachandra" rel="noopener">GitHub</a></li>
+          <li><a href="/resume/Aradhya_Chandra_Resume.pdf">Resume (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="year">2026</span> Aradhya Chandra</p>
+      <p>B.Tech CSE, Shiv Nadar University</p>
+    </div>
   </div>
 </footer>
 </body>

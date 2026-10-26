@@ -19,10 +19,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#1f5f4a">
+  <meta name="theme-color" content="#0f5b4b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js"></script>
 </head>
@@ -30,7 +30,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Aradhya Chandra</a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span><span class="brand-name">Aradhya Chandra</span></a>
     <nav class="nav" aria-label="Main">
       <a href="/#projects">Projects</a>
       <a href="/#skills">Skills</a>
@@ -44,39 +44,64 @@
   </div>
 </header>
 
-<main id="main" class="case">
-  <article class="wrap">
-    <a class="back" href="/#projects">← All projects</a>
-    <p class="eyebrow">Case study 03 · Financial research</p>
-    <h1>AI equity research assistant (TCS)</h1>
-    <p class="question">Can an AI assistant answer questions about a company's financials without making up numbers?</p>
-    <p class="meta">Tata Consultancy Services annual reports · Python, SQLite, local LLM · 2-minute read</p>
+<main id="main">
+  <section class="cs-hero" aria-labelledby="cs-title">
+    <div class="wrap">
+      <a class="back" href="/#projects">← All projects</a>
+      <p class="eyebrow">Case study 03 · Financial research</p>
+      <h1 id="cs-title">AI equity research assistant (TCS)</h1>
+      <p class="question">Can an AI assistant answer questions about a company's financials without making up numbers?</p>
+      <p class="meta">Tata Consultancy Services annual reports · Python, SQLite, local LLM · 2-minute read</p>
+      <div class="cs-kpis">
+        <div class="cs-kpi"><strong>15 of 17</strong><span>numeric answers correct on the frozen test, vs 2 of 17 for the baseline</span></div>
+        <div class="cs-kpi"><strong>0 of 40</strong><span>numeric claims without a source, vs 4 of 18 for the baseline</span></div>
+        <div class="cs-kpi"><strong>3 of 3</strong><span>advice and price-target questions refused correctly</span></div>
+      </div>
+    </div>
+  </section>
 
-    <div class="callout">
+  <div class="wrap cs-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+          <li><a href="#the-problem">The problem</a></li>
+          <li><a href="#the-data">The data</a></li>
+          <li><a href="#what-i-did">What I did</a></li>
+          <li><a href="#key-findings">Key findings</a></li>
+          <li><a href="#recommendation">Recommendation</a></li>
+          <li><a href="#limitations-and-next-steps">Limitations and next steps</a></li>
+          <li><a href="#code-and-full-write-up">Code and full write-up</a></li>
+      </ol>
+    </nav>
+    <article class="cs-body">
+      <div class="callout">
       <p><strong>A research tool, not investment advice.</strong> It gives no recommendations, price targets or valuation verdicts. DCF outputs show what a set of stated assumptions implies, not a prediction.</p>
     </div>
-
-    <h2>The problem</h2>
-    <p>AI chat tools are fluent but can state financial figures that are wrong or have no source, which an analyst can't use. I wanted a research assistant for one company, TCS, where every number is either a reported figure with its page or a calculation you can trace. The design rule: <em>AI interprets, code calculates, sources prove.</em></p>
-
-    <h2>The data</h2>
-    <ul>
+      <section class="cs-section" id="the-problem" aria-labelledby="the-problem-h">
+        <h2 id="the-problem-h">The problem</h2>
+        <p>AI chat tools are fluent but can state financial figures that are wrong or have no source, which an analyst can't use. I wanted a research assistant for one company, TCS, where every number is either a reported figure with its page or a calculation you can trace. The design rule: <em>AI interprets, code calculates, sources prove.</em></p>
+      </section>
+      <section class="cs-section" id="the-data" aria-labelledby="the-data-h">
+        <h2 id="the-data-h">The data</h2>
+        <ul>
       <li>TCS's FY24, FY25 and FY26 annual reports (consolidated figures for FY23 to FY26) and the Q1 FY27 fact sheet.</li>
       <li>178 financial facts entered with their source page; 154 of them checked by me against the report pages.</li>
       <li>A question set of 45 questions with signed-off answers, split into a practice half and a frozen test half.</li>
     </ul>
-
-    <h2>What I did</h2>
-    <ul>
+      </section>
+      <section class="cs-section" id="what-i-did" aria-labelledby="what-i-did-h">
+        <h2 id="what-i-did-h">What I did</h2>
+        <ul>
       <li>Stored every fact in a database with its document and page, with checks that reject bad units, missing pages and figures that don't add up.</li>
       <li>Wrote plain, tested Python for ratios and a discounted cash flow (DCF) model, with every assumption written down with a reason.</li>
       <li>Let a small AI model, running locally, only choose which tool answers a question and write the sentence; a verifier rejects any figure no tool produced.</li>
       <li>Built it to refuse price predictions, advice and questions about other companies.</li>
       <li>Compared it with a standard AI-search setup (same model, same document search, no database or verifier) on the frozen test, run once.</li>
     </ul>
-
-    <h2>Key findings</h2>
-    <div class="findings">
+      </section>
+      <section class="cs-section" id="key-findings" aria-labelledby="key-findings-h">
+        <h2 id="key-findings-h">Key findings</h2>
+        <div class="findings">
       <div class="finding"><strong>15 of 17</strong><span>numeric answers correct on the frozen test, against 2 of 17 for the standard AI-search baseline.</span></div>
       <div class="finding"><strong>0 of 40</strong><span>numeric claims without a source, against 4 of 18 for the baseline.</span></div>
       <div class="finding"><strong>3 of 3</strong><span>advice and price-target questions refused correctly, against 1 of 3 for the baseline.</span></div>
@@ -88,31 +113,70 @@
       <a class="frame" href="/assets/img/tcs-sourced-answer.png" title="Open full-size screenshot"><img src="/assets/img/tcs-sourced-answer.png" width="1280" height="1040" alt="Screenshot of the assistant answering 'What was TCS's operating margin in FY26?' with 25.03%, followed by the formula and four inputs, each citing the TCS Integrated Annual Report 2025-26, PDF page 167, and marked as checked by a human." loading="lazy"></a>
       <figcaption>A live answer from the app. The model writes the sentence; the 25.03% comes from tested code, with the formula and each input linked to its annual-report page. The verifier checked the figure and raised 2 warnings, shown in its own box.</figcaption>
     </figure>
-
-    <h2>Recommendation</h2>
-    <div class="callout">
+      </section>
+      <section class="cs-section" id="recommendation" aria-labelledby="recommendation-h">
+        <h2 id="recommendation-h">Recommendation</h2>
+        <div class="callout callout-rec">
       <p><strong>For financial questions, keep the arithmetic out of the language model.</strong> Let the AI route and explain, let tested code compute, and attach a source to every number. On this test that design removed unsourced figures entirely.</p>
     </div>
-
-    <h2>Limitations and next steps</h2>
-    <ul>
+      </section>
+      <section class="cs-section" id="limitations-and-next-steps" aria-labelledby="limitations-and-next-steps-h">
+        <h2 id="limitations-and-next-steps-h">Limitations and next steps</h2>
+        <ul>
       <li>One company and a small question set; the gold answers have not been reviewed by a finance professional yet.</li>
       <li>24 of the 178 facts and the DCF assumptions still need review; the DCF has no hand-built spreadsheet check yet.</li>
       <li>Known gaps: no unit-conversion tool, some document-search misses, and the small model's routing changes with wording.</li>
       <li>Next: a finance review, a fuller data set with quarterly figures, then two IT-services peers on the same structure.</li>
     </ul>
-
-    <h2>Code and full write-up</h2>
-    <div class="btns">
+      </section>
+      <section class="cs-section" id="code-and-full-write-up" aria-labelledby="code-and-full-write-up-h">
+        <h2 id="code-and-full-write-up-h">Code and full write-up</h2>
+        <div class="btns">
       <a class="btn btn-primary" href="https://github.com/aradhyachandra/investment-research#7-evaluation" rel="noopener">Evaluation write-up</a>
       <a class="btn" href="https://github.com/aradhyachandra/investment-research" rel="noopener">Code on GitHub</a>
     </div>
-  </article>
+      </section>
+    </article>
+  </div>
+
+  <nav class="next-wrap" aria-label="More projects">
+    <div class="wrap next-grid">
+      <a class="next-card" href="/projects/customer-churn.html"><small>← Previous project</small><span>Customer churn &amp; retention analytics</span></a>
+      <a class="next-card next" href="/projects/demand-forecasting.html"><small>Next project →</small><span>Demand forecasting &amp; inventory planning</span></a>
+    </div>
+  </nav>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© <span id="year">2026</span> Aradhya Chandra · <a href="/">Home</a></p>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">AC</span>Aradhya Chandra</a>
+        <p>I turn messy data into business decisions.</p>
+      </div>
+      <nav aria-labelledby="foot-pages">
+        <h2 id="foot-pages">Pages</h2>
+        <ul>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/projects/demand-forecasting.html">Demand forecasting</a></li>
+          <li><a href="/projects/customer-churn.html">Customer churn</a></li>
+          <li><a href="/projects/tcs-research-assistant.html">TCS research assistant</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:aradhyachandra5@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/aradhya-chandra-41390a30b" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/aradhyachandra" rel="noopener">GitHub</a></li>
+          <li><a href="/resume/Aradhya_Chandra_Resume.pdf">Resume (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="year">2026</span> Aradhya Chandra</p>
+      <p>B.Tech CSE, Shiv Nadar University</p>
+    </div>
   </div>
 </footer>
 </body>
