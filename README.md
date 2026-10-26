@@ -50,9 +50,9 @@ Save the new PDF over `resume/Aradhya_Chandra_Resume.pdf` (keep the file name) a
 
 ## Photos
 
-- `assets/img/photo.jpg`: the hero portrait (4:5, 384×480, under 60 KB). To replace it, save a new
-  4:5 photo over it and keep the `width`/`height` in `index.html` matching. It is shown at most
-  ~280px wide so a phone photo stays sharp.
+- `assets/img/photo.jpg`: the hero portrait (4:5, 640×800, under 90 KB). To replace it, save a new
+  4:5 photo over it and keep the `width`/`height` in `index.html` matching. It is shown about
+  300px wide on desktop and above the name on phones.
 - `assets/img/avatar-112.jpg`: the round avatar in the case-study headers, a 112×112 face crop of
   `avatar-square.jpg`.
 
