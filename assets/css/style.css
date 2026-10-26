@@ -116,7 +116,7 @@ p { margin: 0 0 1em; }
 [data-theme-current="dark"] .theme-toggle .sun { display: none; }
 [data-theme-current="dark"] .theme-toggle .moon { display: block; }
 @media (max-width: 520px) {
-  .brand-name { display: none; }
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .nav a { padding: .45rem .42rem; font-size: .88rem; }
   .nav a.active::after { left: .42rem; right: .42rem; }
 }
@@ -428,3 +428,33 @@ figcaption::after { content: " Tap the chart to enlarge."; }
   .tl-item { grid-template-columns: 12rem 1fr; }
   .tl-item::before { left: 13rem; }
 }
+
+/* ---------- Portrait (hero) ---------- */
+.portrait {
+  margin: 0; width: 100%; max-width: 10.5rem;
+  padding: .45rem; border-radius: 22px; background: var(--surface);
+  border: 1px solid var(--border); box-shadow: var(--shadow-lg);
+}
+.portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; }
+/* Phone/tablet: photo above the name, results panel after the buttons */
+@media (max-width: 959px) {
+  .hero-visual { display: contents; }
+  .portrait { order: -1; }
+  .hero-text { order: 0; }
+  .results { order: 1; }
+  .hero-grid { gap: 1.75rem; }
+}
+@media (min-width: 600px) and (max-width: 959px) { .portrait { max-width: 12rem; } }
+/* Desktop: portrait card behind the top-right of the results panel */
+@media (min-width: 960px) {
+  .hero-visual { position: relative; padding-top: 12.5rem; }
+  .portrait { position: absolute; top: 0; right: 0; max-width: 17.5rem; transform: rotate(1.5deg); }
+  .results { position: relative; }
+}
+@media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
+  .portrait { transition: transform .3s ease; }
+  .hero-visual:hover .portrait { transform: rotate(0deg) translateY(-3px); }
+}
+
+/* Round avatar beside the name in case-study headers */
+.brand-avatar { width: 2.25rem; height: 2.25rem; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent); }

@@ -48,10 +48,13 @@ Rule: every number must come from the project's own results files or report. Don
 
 Save the new PDF over `resume/Aradhya_Chandra_Resume.pdf` (keep the file name) and push.
 
-## Add a photo
+## Photos
 
-Put a square photo (about 300×300, under 60 KB) at `assets/img/photo.jpg`, then follow the comment
-above the `monogram` div in `index.html`.
+- `assets/img/photo.jpg`: the hero portrait (4:5, 384×480, under 60 KB). To replace it, save a new
+  4:5 photo over it and keep the `width`/`height` in `index.html` matching. It is shown at most
+  ~280px wide so a phone photo stays sharp.
+- `assets/img/avatar-112.jpg`: the round avatar in the case-study headers, a 112×112 face crop of
+  `avatar-square.jpg`.
 
 ## Link-preview image
 

@@ -57,11 +57,8 @@
   <!-- ===== Hero ===== -->
   <section class="hero" aria-labelledby="name">
     <div class="wrap hero-grid">
-      <div>
+      <div class="hero-text">
         <div class="hero-id">
-          <!-- To use a photo: replace this div with
-               <img class="monogram" src="/assets/img/photo.jpg" alt="Aradhya Chandra" width="56" height="56"> -->
-          <div class="monogram" aria-hidden="true">AC</div>
           <p class="eyebrow">Analytics portfolio</p>
         </div>
         <h1 id="name">Aradhya Chandra</h1>
@@ -79,6 +76,11 @@
         </div>
       </div>
 
+      <div class="hero-visual">
+        <!-- Portrait: 384×480 phone photo, shown at most ~300px wide so it stays sharp -->
+        <figure class="portrait">
+          <img src="/assets/img/photo.jpg" alt="Aradhya Chandra" width="384" height="480" loading="eager" decoding="async" fetchpriority="high">
+        </figure>
       <aside class="results" aria-labelledby="results-h">
         <div class="results-head">
           <p id="results-h">Headline results</p>
@@ -102,6 +104,7 @@
           </a>
         </div>
       </aside>
+      </div>
     </div>
   </section>
 
@@ -138,7 +141,7 @@
       <div class="features">
         <article class="feature reveal">
           <a class="shot" href="/projects/demand-forecasting.html" aria-label="Read the demand forecasting case study">
-            <div class="shot-inner"><img src="/assets/img/home-demand.webp" width="1100" height="520" alt="Line chart of average inventory against fill rate for three ordering policies. The LightGBM line sits below TSB and seasonal naive at every fill rate." loading="lazy" decoding="async"></div>
+            <div class="shot-inner"><img src="/assets/img/home-demand.webp" width="1000" height="473" alt="Line chart of average inventory against fill rate for three ordering policies. The LightGBM line sits below TSB and seasonal naive at every fill rate." loading="lazy" decoding="async"></div>
           </a>
           <div>
             <span class="feature-num"><b>01</b>Retail operations</span>
@@ -182,7 +185,7 @@
 
         <article class="feature reveal">
           <a class="shot" href="/projects/tcs-research-assistant.html" aria-label="Read the TCS research assistant case study">
-            <div class="shot-inner"><img src="/assets/img/home-tcs.webp" width="1000" height="812" alt="Screenshot of the assistant answering a question about TCS's FY26 operating margin with 25.03%, with each input cited to an annual-report page." loading="lazy" decoding="async"></div>
+            <div class="shot-inner"><img src="/assets/img/home-tcs.webp" width="900" height="731" alt="Screenshot of the assistant answering a question about TCS's FY26 operating margin with 25.03%, with each input cited to an annual-report page." loading="lazy" decoding="async"></div>
           </a>
           <div>
             <span class="feature-num"><b>03</b>Financial research</span>
