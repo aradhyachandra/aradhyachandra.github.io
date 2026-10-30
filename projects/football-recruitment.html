@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Football Recruitment on a Budget · Aradhya Chandra</title>
+  <meta name="description" content="Case study: Leicester City lose N'Golo Kanté in 2016. Comparing 307 central midfielders on per-90, possession-adjusted StatsBomb profiles to find similar profiles at a fraction of his market value.">
+  <link rel="canonical" href="https://aradhyachandra.github.io/projects/football-recruitment.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Aradhya Chandra">
+  <meta property="og:title" content="Football recruitment on a budget · Aradhya Chandra">
+  <meta property="og:description" content="Leicester City are losing N'Golo Kanté. Which affordable midfielders had a similar on-pitch profile?">
+  <meta property="og:url" content="https://aradhyachandra.github.io/projects/football-recruitment.html">
+  <meta property="og:image" content="https://aradhyachandra.github.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aradhyachandra.github.io/assets/img/og-image.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0f5b4b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img class="brand-avatar" src="/assets/img/avatar-112.jpg" alt="" width="32" height="32" decoding="async"><span class="brand-name">Aradhya Chandra</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/#skills">Skills</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero" aria-labelledby="cs-title">
+    <div class="wrap">
+      <a class="back" href="/#projects">← All projects</a>
+      <p class="eyebrow">Case study 04 · Sports analytics</p>
+      <h1 id="cs-title">Football recruitment on a budget</h1>
+      <p class="question">Leicester City are losing N'Golo Kanté. Which affordable midfielders had a similar on-pitch profile?</p>
+      <p class="meta">StatsBomb event data, 2015/16, four leagues · Python, SQL (DuckDB), Streamlit · 2-minute read</p>
+      <div class="cs-kpis">
+        <div class="cs-kpi"><strong>307</strong><span>central midfielders compared with Kanté, per 90 minutes and adjusted for possession</span></div>
+        <div class="cs-kpi"><strong>EUR 1.5m</strong><span>market value of the recommended midfielder, against EUR 20m for Kanté</span></div>
+        <div class="cs-kpi"><strong>16 of 16</strong><span>one-change scenarios kept him in the value top 10</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap cs-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+          <li><a href="#the-problem">The problem</a></li>
+          <li><a href="#the-data">The data</a></li>
+          <li><a href="#what-kante-contributed">What Kanté contributed</a></li>
+          <li><a href="#what-i-did">What I did</a></li>
+          <li><a href="#key-findings">Key findings</a></li>
+          <li><a href="#recommendation">Recommendation</a></li>
+          <li><a href="#limitations-and-next-steps">Limitations and next steps</a></li>
+          <li><a href="#code-and-full-report">Code and full report</a></li>
+      </ol>
+    </nav>
+    <article class="cs-body">
+
+      <section class="cs-section" id="the-problem" aria-labelledby="the-problem-h">
+        <h2 id="the-problem-h">The problem</h2>
+        <p>Leicester City have just won the 2015/16 Premier League, and their ball-winning central midfielder, N'Golo Kanté, is leaving. His market value at the start of the summer window was EUR 20m. The brief: find players who did a similar job on the pitch for at most EUR 10m, aged 20 to 28, from Europe's four big leagues. The case is historical, so I used only 2015/16 match data and market values dated on or before 1 July 2016.</p>
+      </section>
+      <section class="cs-section" id="the-data" aria-labelledby="the-data-h">
+        <h2 id="the-data-h">The data</h2>
+        <ul>
+      <li>StatsBomb Open Data for 2015/16: the Premier League, La Liga, Serie A and Ligue 1, or 1,517 matches and 5,321,459 events (every pass, tackle, carry and shot, with its location).</li>
+      <li>Market values from transfermarkt-datasets, a published snapshot of Transfermarkt (nothing was scraped). 2,175 of 2,176 players matched across the two sources (99.95%); each player gets his latest valuation on or before 1 July 2016.</li>
+      <li>Market value is a crowd-sourced estimate, not a transfer fee or a wage, but it is the only price signal available.</li>
+    </ul>
+        <div class="data-credit">
+          <img src="/assets/img/statsbomb-logo.png" width="2258" height="344" alt="Hudl StatsBomb logo" loading="lazy" decoding="async">
+          <p>Data: StatsBomb Open Data, used under the StatsBomb Public Data User Agreement; logo from the StatsBomb Media Pack. Market values: transfermarkt-datasets (CC0-1.0). This page shows summaries only, never event-level data.</p>
+        </div>
+      </section>
+      <section class="cs-section" id="what-kante-contributed" aria-labelledby="what-kante-contributed-h">
+        <h2 id="what-kante-contributed-h">What Kanté contributed</h2>
+        <p>Goals and assists miss most of what Kanté did. I measured every central midfielder per 90 minutes and adjusted defensive actions for team possession, because a team that rarely has the ball, like Leicester, gives its players more chances to tackle and intercept.</p>
+        <p>Against the 307 central midfielders with 900+ league minutes, Kanté ranked at the <strong>96th percentile for interceptions, 93rd for blocks and 92nd for tackles won</strong>, and 84th for carrying the ball forward. On shots and expected goals he sat at the 24th and 15th percentiles. A list sorted by goals would not find him.</p>
+      </section>
+      <section class="cs-section" id="what-i-did" aria-labelledby="what-i-did-h">
+        <h2 id="what-i-did-h">What I did</h2>
+        <ul>
+      <li>Flattened the raw match files one at a time into compact Parquet files and prepared everything in SQL (DuckDB): minutes from lineups and substitutions, team possession in each match, per-90 totals and playing roles. Each query was tested on small hand-made tables.</li>
+      <li>Built profiles on 15 per-90 metrics in four groups (ball winning, progression, passing security, attacking output), with defensive actions adjusted for possession.</li>
+      <li>Scored every player's similarity to Kanté (0-100) with a weighted distance on standardised metrics. The group weights (40%, 30%, 15%, 15%) were written down before any names were seen.</li>
+      <li>Priced the pool two ways: a value frontier (players for whom nobody is both more similar and cheaper) and a value score (70% similarity, 30% cheapness) within the budget and age range.</li>
+      <li>Re-ran everything under 16 one-change scenarios and 300 random weightings, and checked whether a player's first-half profile picks out his own second half.</li>
+    </ul>
+      </section>
+      <section class="cs-section" id="key-findings" aria-labelledby="key-findings-h">
+        <h2 id="key-findings-h">Key findings</h2>
+        <div class="findings">
+      <div class="finding"><strong>90.2</strong><span>similarity for Jack Cork (Swansea City, EUR 4m), the closest profile in the pool; Nemanja Radoja (Celta Vigo, EUR 3.5m) came next. Both fit the budget.</span></div>
+      <div class="finding"><strong>EUR 1.5m</strong><span>Sebastián Cristóforo (Sevilla, 22) tops the value ranking: similarity 84.5, but only 13th by similarity alone. He wins on price as much as on profile.</span></div>
+      <div class="finding"><strong>7 players</strong><span>stayed in the value top 10 in at least 12 of the 16 scenarios. All three recommended players are among them.</span></div>
+      <div class="finding"><strong>21.0%</strong><span>of 248 players had their own other half-season as the closest profile (48.8% in the top 5). Profiles carry real signal but also noise, so small gaps in similarity should not be over-read.</span></div>
+    </div>
+    <p class="note">Every list here is a <strong>similar profile under stated assumptions</strong> (the metrics, weights and constraints written down before the run), not a forecast of how a player would do at Leicester.</p>
+
+    <figure>
+      <a class="frame" href="/assets/img/football-similarity-value.png" title="Open full-size chart"><img src="/assets/img/football-similarity-value.png" width="1300" height="720" alt="Scatter chart of similarity to Kanté against market value on a log scale for every priced central midfielder. The numbered frontier and shortlist players sit at the top left, below the EUR 10m budget line, between about EUR 0.2m and EUR 4m." loading="lazy"></a>
+      <figcaption>Similarity to Kanté against market value (log scale). Blue dots form the value frontier; orange rings mark the top 10 by value score within the budget and age range. The key on the right lists each numbered player.</figcaption>
+    </figure>
+    <p><strong>Robustness.</strong> Cristóforo stayed in the value top 10 in all 16 one-change scenarios (minutes threshold, group weights, value-score weights, budget, age range, possession adjustment, stale valuations) and in 100% of the 300 random weightings; he was in the top 3 in 81.2% of the scenarios.</p>
+      </section>
+      <section class="cs-section" id="recommendation" aria-labelledby="recommendation-h">
+        <h2 id="recommendation-h">Recommendation</h2>
+        <div class="callout callout-rec">
+      <p><strong>Put Sebastián Cristóforo (Sevilla, EUR 1.5m) first on the scouting list,</strong> with Jessy Pi (Troyes, EUR 2m) and Benjamin André (Rennes, EUR 2m) as backups. This is the route of most profile per euro. If the club would rather have the closest profile it can afford, the route is Jack Cork or Nemanja Radoja. Scouting, medical, wage and character checks come first either way; this analysis covers none of them.</p>
+    </div>
+      </section>
+      <section class="cs-section" id="limitations-and-next-steps" aria-labelledby="limitations-and-next-steps-h">
+        <h2 id="limitations-and-next-steps-h">Limitations and next steps</h2>
+        <ul>
+      <li>Cristóforo played 1,503 minutes, too few in one half of the season for the half-season check; 5 of the 10 shortlisted players could not be rated by it.</li>
+      <li>One season and event data only. Without tracking data, off-ball work such as positioning is invisible apart from pressures.</li>
+      <li>The metric groups and weights are judgement calls made for this case. The scenarios test them but cannot remove them, and the valuation date was not varied.</li>
+      <li>Market values are estimates, not fees or wages. With a club's own wage and fee data the value ranking could be quoted with more confidence.</li>
+    </ul>
+      </section>
+      <section class="cs-section" id="code-and-full-report" aria-labelledby="code-and-full-report-h">
+        <h2 id="code-and-full-report-h">Code and full report</h2>
+        <p>Built with Python, SQL (DuckDB), pandas, matplotlib and a local Streamlit dashboard. The dashboard is not deployed, because the StatsBomb terms do not allow the data to be passed on; anyone can rebuild it from the free download.</p>
+        <div class="btns">
+      <a class="btn btn-primary" href="https://github.com/aradhyachandra/football-recruitment/blob/main/docs/REPORT.md" rel="noopener">Full findings report</a>
+      <a class="btn" href="https://github.com/aradhyachandra/football-recruitment" rel="noopener">Code on GitHub</a>
+    </div>
+      </section>
+    </article>
+  </div>
+
+  <nav class="next-wrap" aria-label="More projects">
+    <div class="wrap next-grid">
+      <a class="next-card" href="/projects/tcs-research-assistant.html"><small>← Previous project</small><span>AI equity research assistant (TCS)</span></a>
+      <a class="next-card next" href="/projects/demand-forecasting.html"><small>Next project →</small><span>Demand forecasting &amp; inventory planning</span></a>
+    </div>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><img class="brand-avatar" src="/assets/img/avatar-112.jpg" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="brand-name">Aradhya Chandra</span></a>
+        <p>I turn messy data into business decisions.</p>
+      </div>
+      <nav aria-labelledby="foot-pages">
+        <h2 id="foot-pages">Pages</h2>
+        <ul>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/projects/demand-forecasting.html">Demand forecasting</a></li>
+          <li><a href="/projects/customer-churn.html">Customer churn</a></li>
+          <li><a href="/projects/tcs-research-assistant.html">TCS research assistant</a></li>
+          <li><a href="/projects/football-recruitment.html">Football recruitment</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:aradhyachandra5@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/aradhya-chandra-41390a30b" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/aradhyachandra" rel="noopener">GitHub</a></li>
+          <li><a href="/resume/Aradhya_Chandra_Resume.pdf">Resume (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>© <span id="year">2026</span> Aradhya Chandra</p>
+      <p>B.Tech CSE, Shiv Nadar University</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

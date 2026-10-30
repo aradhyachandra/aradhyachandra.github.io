@@ -198,7 +198,8 @@ p { margin: 0 0 1em; }
 .results-head p { margin: 0; font: 600 .75rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .results-head span { font-size: .85rem; color: var(--muted); }
 .kpis { display: grid; gap: .75rem; }
-@media (min-width: 860px) { .kpis { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+@media (min-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; } }
+@media (min-width: 1100px) { .kpis { grid-template-columns: repeat(4, 1fr); } }
 .kpi {
   position: relative; display: flex; flex-direction: column; gap: .55rem;
   padding: 1.25rem 3rem 1.3rem 1.35rem; border-radius: var(--radius); border: 1px solid var(--border);
@@ -373,8 +374,8 @@ p { margin: 0 0 1em; }
 .cs-kpi strong { display: block; font: 600 clamp(1.6rem, 4.5vw, 2rem)/1.1 var(--display); color: var(--accent); letter-spacing: -.02em; margin-bottom: .35rem; font-variant-numeric: lining-nums; }
 .cs-kpi span { font-size: .92rem; color: var(--muted); line-height: 1.4; display: block; }
 
-.cs-layout { display: grid; gap: 2rem; padding: 2.5rem 0 4rem; }
-@media (min-width: 1000px) { .cs-layout { grid-template-columns: 13rem minmax(0, 1fr); gap: 4rem; padding: 3.5rem 0 5rem; } }
+.cs-layout { display: grid; gap: 2rem; padding-top: 2.5rem; padding-bottom: 4rem; }  /* top/bottom only: keep .wrap's side gutter */
+@media (min-width: 1000px) { .cs-layout { grid-template-columns: 13rem minmax(0, 1fr); gap: 4rem; padding-top: 3.5rem; padding-bottom: 5rem; } }
 .toc { display: none; }
 @media (min-width: 1000px) {
   .toc { display: block; position: sticky; top: 5.5rem; align-self: start; }
@@ -450,3 +451,9 @@ figcaption::after { content: " Tap the chart to enlarge."; }
 
 /* footer lockup matches the header: name in full ink, not link grey */
 .site-footer .brand, .site-footer .brand:hover { color: var(--ink); text-decoration: none; }
+
+/* Data credit with the provider's logo (football case study: the StatsBomb terms ask for their logo on
+   every published analysis). The logo has dark lettering, so it sits on a white plate in both themes. */
+.data-credit { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1.25rem 0 0; }
+.data-credit img { width: 180px; height: auto; flex: none; background: #fff; padding: .55rem .75rem; border-radius: 8px; border: 1px solid rgba(20,32,28,.08); }
+.data-credit p { flex: 1 1 16rem; margin: 0; font-size: .9rem; color: var(--muted); }

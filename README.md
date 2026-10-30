@@ -20,7 +20,7 @@ by double-clicking the file.
 | `projects/*.html` | One case-study page per project |
 | `assets/css/style.css` | All styling. Colours and fonts are the tokens at the top (`--accent`, `--gold`, `--display`, `--sans`) |
 | `assets/js/main.js` | Light/dark toggle, current-section highlight, fade-in on scroll |
-| `assets/img/` | Charts (copied from each project repo), smaller `home-*.webp` copies used on the home page, and `og-image.png` (link preview) |
+| `assets/img/` | Charts (copied from each project repo), smaller `home-*.webp` copies used on the home page, `og-image.png` (link preview), and `statsbomb-logo.png` (the unchanged file from StatsBomb's Media Pack: the StatsBomb data terms require their logo on the football case study; keep it there) |
 | `resume/Aradhya_Chandra_Resume.pdf` | The resume behind the "Resume (PDF)" button |
 | `tools/og-image.html` | Source for the link-preview image (see below) |
 

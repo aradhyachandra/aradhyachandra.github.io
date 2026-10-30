@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aradhya Chandra · Analytics</title>
-  <meta name="description" content="Aradhya Chandra, B.Tech CSE at Shiv Nadar University. Analytics projects that turn data into business decisions: inventory planning, customer retention and financial research.">
+  <meta name="description" content="Aradhya Chandra, B.Tech CSE at Shiv Nadar University. Analytics projects that turn data into business decisions: inventory planning, customer retention, financial research and football recruitment.">
   <link rel="canonical" href="https://aradhyachandra.github.io/">
 
   <!-- Link previews (Gmail, LinkedIn, WhatsApp, X) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Aradhya Chandra">
   <meta property="og:title" content="Aradhya Chandra · I turn messy data into business decisions">
-  <meta property="og:description" content="Analytics projects on inventory planning, customer retention and financial research, each with the business question, the finding and the recommendation.">
+  <meta property="og:description" content="Analytics projects on inventory planning, customer retention, financial research and football recruitment, each with the business question, the finding and the recommendation.">
   <meta property="og:url" content="https://aradhyachandra.github.io/">
   <meta property="og:image" content="https://aradhyachandra.github.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
   <meta property="og:image:alt" content="Aradhya Chandra: I turn messy data into business decisions">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aradhya Chandra · I turn messy data into business decisions">
-  <meta name="twitter:description" content="Analytics projects on inventory planning, customer retention and financial research.">
+  <meta name="twitter:description" content="Analytics projects on inventory planning, customer retention, financial research and football recruitment.">
   <meta name="twitter:image" content="https://aradhyachandra.github.io/assets/img/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -88,7 +88,7 @@
     <div class="wrap">
       <div class="results-head">
         <p id="results-h">Headline results</p>
-        <span>Tested on data the models never saw</span>
+        <span>Tested on data the models never saw, or across stated scenarios</span>
       </div>
       <div class="kpis">
         <a class="kpi" href="/projects/demand-forecasting.html">
@@ -104,6 +104,11 @@
         <a class="kpi" href="/projects/tcs-research-assistant.html">
           <span class="kpi-value">15/17</span>
           <span><span class="kpi-label">numeric answers correct</span><span class="kpi-meta">TCS research assistant · vs 2 of 17 for a baseline</span></span>
+          <span class="kpi-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="kpi" href="/projects/football-recruitment.html">
+          <span class="kpi-value">16/16</span>
+          <span><span class="kpi-label">scenarios kept the recommended midfielder in the value top 10</span><span class="kpi-meta">Football recruitment · similar profile under stated assumptions</span></span>
           <span class="kpi-arrow" aria-hidden="true">→</span>
         </a>
       </div>
@@ -136,8 +141,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Projects</p>
-        <h2 id="projects-h">Three business questions, answered with data</h2>
-        <p class="lede">Each project starts from a decision someone has to make, tests the answer on data it never saw, and says which numbers are measured and which rest on assumptions.</p>
+        <h2 id="projects-h">Four business questions, answered with data</h2>
+        <p class="lede">Each project starts from a decision someone has to make, tests the answer on data it never saw or across stated scenarios, and says which numbers are measured and which rest on assumptions.</p>
       </div>
 
       <div class="features">
@@ -203,6 +208,28 @@
             <div class="feature-links">
               <a class="btn btn-primary" href="/projects/tcs-research-assistant.html">Read the case study →</a>
               <a class="btn" href="https://github.com/aradhyachandra/investment-research" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature reveal">
+          <a class="shot" href="/projects/football-recruitment.html" aria-label="Read the football recruitment case study">
+            <div class="shot-inner"><img src="/assets/img/home-football.webp" width="1000" height="554" alt="Scatter chart of similarity to N'Golo Kanté against market value for central midfielders, with the value frontier and shortlist marked below the EUR 10m budget line." loading="lazy" decoding="async"></div>
+          </a>
+          <div>
+            <span class="feature-num"><b>04</b>Sports analytics</span>
+            <h3>Football recruitment on a budget</h3>
+            <p class="question">Leicester City are losing N'Golo Kanté. Which affordable midfielders had a similar on-pitch profile?</p>
+            <div class="result">
+              <strong>EUR 1.5m vs EUR 20m</strong>
+              <span>market value of the recommended midfielder against Kanté's, out of 307 central midfielders in four leagues. A similar profile under stated assumptions; in the value top 10 in all 16 scenarios.</span>
+            </div>
+            <ul class="tags" aria-label="Tools">
+              <li>SQL (DuckDB)</li><li>Python</li><li>Similarity analysis</li><li>Sensitivity analysis</li>
+            </ul>
+            <div class="feature-links">
+              <a class="btn btn-primary" href="/projects/football-recruitment.html">Read the case study →</a>
+              <a class="btn" href="https://github.com/aradhyachandra/football-recruitment" rel="noopener">Code</a>
             </div>
           </div>
         </article>
@@ -328,6 +355,7 @@
           <li><a href="/projects/demand-forecasting.html">Demand forecasting</a></li>
           <li><a href="/projects/customer-churn.html">Customer churn</a></li>
           <li><a href="/projects/tcs-research-assistant.html">TCS research assistant</a></li>
+          <li><a href="/projects/football-recruitment.html">Football recruitment</a></li>
         </ul>
       </nav>
       <div>
