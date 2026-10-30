@@ -85,7 +85,7 @@
         <h2 id="the-data-h">The data</h2>
         <ul>
       <li>TCS's FY24, FY25 and FY26 annual reports (consolidated figures for FY23 to FY26) and the Q1 FY27 fact sheet.</li>
-      <li>178 financial facts entered with their source page; 154 of them checked by me against the report pages.</li>
+      <li>178 financial facts, read from the reports with an AI assistant and each checked by me against its source page.</li>
       <li>A question set of 45 questions with signed-off answers, split into a practice half and a frozen test half.</li>
     </ul>
       </section>
@@ -94,7 +94,7 @@
         <ul>
       <li>Stored every fact in a database with its document and page, with checks that reject bad units, missing pages and figures that don't add up.</li>
       <li>Wrote plain, tested Python for ratios and a discounted cash flow (DCF) model, with every assumption written down with a reason.</li>
-      <li>Let a small AI model, running locally, only choose which tool answers a question and write the sentence; a verifier rejects any figure no tool produced.</li>
+      <li>Let a small AI model, running locally, choose the tools from fixed lists (code rules then check its choice) and write the sentence; a verifier rejects figures the tools can't support.</li>
       <li>Built it to refuse price predictions, advice and questions about other companies.</li>
       <li>Compared it with a standard AI-search setup (same model, same document search, no database or verifier) on the frozen test, run once.</li>
     </ul>
@@ -124,7 +124,7 @@
         <h2 id="limitations-and-next-steps-h">Limitations and next steps</h2>
         <ul>
       <li>One company and a small question set; the gold answers have not been reviewed by a finance professional yet.</li>
-      <li>24 of the 178 facts and the DCF assumptions still need review; the DCF has no hand-built spreadsheet check yet.</li>
+      <li>The DCF assumptions still need an independent finance review, and the DCF has no hand-built spreadsheet check yet.</li>
       <li>Known gaps: no unit-conversion tool, some document-search misses, and the small model's routing changes with wording.</li>
       <li>Next: a finance review, a fuller data set with quarterly figures, then two IT-services peers on the same structure.</li>
     </ul>
