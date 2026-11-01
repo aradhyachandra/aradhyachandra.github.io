@@ -186,7 +186,7 @@ p { margin: 0 0 1em; }
   border-radius: 22px; border: 1.5px solid color-mix(in srgb, var(--accent) 45%, transparent);
   background: color-mix(in srgb, var(--accent-soft) 60%, transparent);
 }
-@media (max-width: 959px) { .portrait { order: -1; } .hero-grid { gap: 2rem; } }
+@media (max-width: 959px) { .portrait { max-width: 10.5rem; } .hero-grid { gap: 1.75rem; } } /* phones: name and buttons first, smaller photo after */
 @media (min-width: 960px) {
   .portrait { max-width: 21.25rem; justify-self: center; } /* 340px */
 }
