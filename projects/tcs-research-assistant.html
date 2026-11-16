@@ -94,15 +94,15 @@
         <ul>
       <li>Stored every fact in a database with its document and page, with checks that reject bad units, missing pages and figures that don't add up.</li>
       <li>Wrote plain, tested Python for ratios and a discounted cash flow (DCF) model, with every assumption written down with a reason.</li>
-      <li>Let a small AI model, running locally, choose the tools from fixed lists (code rules then check its choice) and write the sentence; a verifier rejects figures the tools can't support.</li>
+      <li>Let a small AI model, running locally, choose the tools from fixed lists (code rules then check its choice) and write the sentence; a code check replaces any answer containing a number that isn't in the tool output or retrieved text.</li>
       <li>Built it to refuse price predictions, advice and questions about other companies.</li>
-      <li>Compared it with a standard AI-search setup (same model, same document search, no database or verifier) on the frozen test, run once.</li>
+      <li>Compared it with a simple, untuned AI-search setup (same model and documents, plain search with no year filter, no database or verifier) on the frozen test, run once.</li>
     </ul>
       </section>
       <section class="cs-section" id="key-findings" aria-labelledby="key-findings-h">
         <h2 id="key-findings-h">Key findings</h2>
         <div class="findings">
-      <div class="finding"><strong>15 of 17</strong><span>numeric answers correct on the frozen test, against 2 of 17 for the standard AI-search baseline.</span></div>
+      <div class="finding"><strong>15 of 17</strong><span>numeric answers correct on the frozen test, against 2 of 17 for the simple AI-search baseline. With the number check switched off it also scored 15 of 17, so the gain came from the tools.</span></div>
       <div class="finding"><strong>0 of 40</strong><span>numeric claims without a source, against 4 of 18 for the baseline.</span></div>
       <div class="finding"><strong>3 of 3</strong><span>advice and price-target questions refused correctly, against 1 of 3 for the baseline.</span></div>
       <div class="finding"><strong>22 of 23</strong><span>questions handled the right way (answer, refuse, or "not available"), against 19 of 23.</span></div>
@@ -117,7 +117,7 @@
       <section class="cs-section" id="recommendation" aria-labelledby="recommendation-h">
         <h2 id="recommendation-h">Recommendation</h2>
         <div class="callout callout-rec">
-      <p><strong>For financial questions, keep the arithmetic out of the language model.</strong> Let the AI route and explain, let tested code compute, and attach a source to every number. On this test that design removed unsourced figures entirely.</p>
+      <p><strong>For financial questions, keep the arithmetic out of the language model.</strong> Let the AI route and explain, let tested code compute, and attach a source to every number. On this test the accuracy came from the tools; the number check is a safety net, and it does not catch a real number attached to the wrong label.</p>
     </div>
       </section>
       <section class="cs-section" id="limitations-and-next-steps" aria-labelledby="limitations-and-next-steps-h">
@@ -125,6 +125,7 @@
         <ul>
       <li>One company and a small question set; the gold answers have not been reviewed by a finance professional yet.</li>
       <li>The DCF assumptions still need an independent finance review, and the DCF has no hand-built spreadsheet check yet.</li>
+      <li>The "without a source" count uses the same number matching as the check, so 0 of 40 is close to true by design. With 17 numeric questions, 15 of 17 has a wide margin of error.</li>
       <li>Known gaps: no unit-conversion tool, some document-search misses, and the small model's routing changes with wording.</li>
       <li>Next: a finance review, a fuller data set with quarterly figures, then two IT-services peers on the same structure.</li>
     </ul>
